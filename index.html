@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll The Dice - Two Player Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-title">🎲 Roll The Dice</div>
+        <button class="leaderboard-btn" id="openLeaderboardBtn">🏆 Leaderboard</button>
+    </header>
+
+    <main>
+        <section class="config-section">
+            <div class="input-group">
+                <label>Player 1 Name</label>
+                <input type="text" id="playerOneInput" value="Player 1" placeholder="Enter Name">
+            </div>
+            <div class="input-group">
+                <label>Player 2 Name</label>
+                <input type="text" id="playerTwoInput" value="Player 2" placeholder="Enter Name">
+            </div>
+            <div class="input-group" style="max-width: 140px;">
+                <label>Win at (points)</label>
+                <input type="number" id="winScoreInput" value="100" min="1" placeholder="e.g. 50">
+            </div>
+            <button class="start-btn" id="startGameBtn">▶️ Start / Update</button>
+        </section>
+
+        <div class="game-card" id="gameCard">
+            <div class="top-bar">
+                <button class="new-game-btn" id="newGameBtn">🔄 New Game</button>
+            </div>
+
+            <div class="players-row">
+                <div class="player-panel active" id="panelOne">
+                    <div class="player-name" id="nameOneDisplay">Player 1</div>
+                    <div class="player-total" id="totalOne">0</div>
+                    <div class="current-box" id="currentBoxOne">
+                        <div class="label">CURRENT</div>
+                        <div class="value" id="currentOne">0</div>
+                    </div>
+                </div>
+
+                <div class="center-controls">
+                    <div class="dice" id="dice">
+                        <div class="pip" data-i="0"></div>
+                        <div class="pip" data-i="1"></div>
+                        <div class="pip" data-i="2"></div>
+                        <div class="pip" data-i="3"></div>
+                        <div class="pip active" data-i="4"></div>
+                        <div class="pip" data-i="5"></div>
+                        <div class="pip" data-i="6"></div>
+                        <div class="pip" data-i="7"></div>
+                        <div class="pip" data-i="8"></div>
+                    </div>
+                    <button class="control-btn roll-btn" id="rollBtn">🎲 Roll Dice</button>
+                    <button class="control-btn hold-btn" id="holdBtn">✋ Hold</button>
+                </div>
+
+                <div class="player-panel" id="panelTwo">
+                    <div class="player-name" id="nameTwoDisplay">Player 2</div>
+                    <div class="player-total" id="totalTwo">0</div>
+                    <div class="current-box p2" id="currentBoxTwo">
+                        <div class="label">CURRENT</div>
+                        <div class="value" id="currentTwo">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status-line" id="statusLine">Playing to 100. Player 1's turn — roll the dice!</div>
+        </div>
+    </main>
+
+    <footer>Roll The Dice Application &copy; 2026.</footer>
+
+    <!-- Leaderboard Modal -->
+    <div class="modal-overlay" id="leaderboardModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>🏆 Game Leaderboard</h3>
+                <button class="modal-close" id="closeLeaderboardBtn">&times;</button>
+            </div>
+            <div class="leaderboard-scroll">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Player</th>
+                            <th>Wins</th>
+                            <th>Losses</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody"></tbody>
+                </table>
+            </div>
+            <button class="clear-stats-btn" id="clearStatsBtn">🗑️ Clear All Records</button>
+        </div>
+    </div>
+
+    <!-- Win Modal -->
+    <div class="modal-overlay" id="winModal">
+        <div class="modal-card">
+            <div class="win-modal-content">
+                <div class="trophy-emoji">🏆</div>
+                <div class="winner-title" id="winnerText">Player Wins!</div>
+                <button class="play-again-btn" id="playAgainBtn">🔁 Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
